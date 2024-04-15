@@ -28,7 +28,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer text-black hover:opacity-[1] dark:text-white"
       >
         {item}
       </motion.p>
@@ -92,10 +92,10 @@ export const ProductItem = ({
     <Link href={href} className="flex space-x-2">
       <Image
         src={src}
-        width={140}
+        width={100}
         height={70}
         alt={title}
-        className="flex-shrink-0 rounded-md shadow-2xl object-fill"
+        className="flex-shrink-0 rounded-lg shadow-[22px 22px 44px #b5b5b5,-22px -22px 44px #ffffff] bg-[#e0e0e0] object-fill"
       />
       <div>
         <h4 className="text-xl font-bold mb-1 text-black dark:text-white">

@@ -1,30 +1,33 @@
-import { NextResponse,NextRequest } from "next/server";
-import {cookies} from "next/headers"
+import { NextResponse, NextRequest } from "next/server";
+import { cookies } from "next/headers";
 
-export function middleware(req:NextRequest){
-    const cookieStore = cookies()
-    const path = req.nextUrl.pathname;
-const isPublicPath = path === '/users/login' || '/users/signup'
-const token = cookieStore.get("jwt")?.value || ""
-if (isPublicPath && token) {
-    return NextResponse.redirect(new URL ("/users/profile",req.nextUrl))
+export function middleware(req: NextRequest) {
+  const cookieStore = cookies();
+  const path = req.nextUrl.pathname;
+  const isPublicPathL = path === "/users/login";
+  const isPublicPathS = path === "/users/signup";
+  const pfile = path === "/profile";
+  console.log("pfile", pfile);
+  const token = cookieStore.has("jwt");
+  console.log("public", isPublicPathL);
+  console.log("token", token);
+  if (!isPublicPathL && !isPublicPathS && !token) {
+    return NextResponse.redirect(new URL("/users/login", req.nextUrl));
+  }
+  if (isPublicPathL && isPublicPathS && token) {
+    return NextResponse.redirect(new URL("/profile", req.nextUrl));
+  }
+  if (isPublicPathL) {
+    console.log("is public");
+  }
 }
-if (!isPublicPath && !token) {
-    return NextResponse.redirect(new URL("/users/login",req.nextUrl))
-}
-
-// if (!token) {
-//     return NextResponse.redirect(new URL("/users/login", req.nextUrl))
-// }
-}
-
-
 
 export const config = {
-    matcher:[
-        '/',
-        '/users/profile',
-        '/users/login',
-        '/users/signup'
-    ]
-}
+  matcher: [
+    "/",
+    "/profile/:path*",
+    "/profile",
+    "/users/login",
+    "/users/signup",
+  ],
+};

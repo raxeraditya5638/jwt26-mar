@@ -1,17 +1,23 @@
 "use client";
 import axios from "axios";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   const [data, setData] = useState("nothing");
   const [logout, setlogout] = useState("nothing");
+  const router = useRouter();
   const userdetails = async () => {
     try {
-      const res = await axios.post("/api/users/profile");
-      // console.log(res.data);
-      // res.data = whole data to send first object
-      // if you find user = res.data.data.user
-      setData(res.data.data);
+      const res = await axios.post("/api/v1/profile");
+      console.log("res", res);
+      console.log("res. : :", res);
+      // res.id = whole id to send first object
+      // if you find user = res.id.id.user
+      const Id = res.data.id;
+      console.log("id is id: :", Id);
+      setData(res.data.id);
+      router.push(`/profile/${Id}`);
     } catch (error: any) {
       console.log("some error", error);
     }
@@ -22,6 +28,7 @@ const page = () => {
       setlogout(res.data.message);
       console.log("retrun data :");
       console.log("hey data", res.data.message);
+      router.push("/users/login");
     } catch (error: any) {
       console.log("some error", error);
     }

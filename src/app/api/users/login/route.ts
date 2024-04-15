@@ -11,7 +11,8 @@ export async function POST(req: NextRequest) {
     const cookieStore = cookies();
     const { username, email, password } = await req.json();
 
-    await ConnectDB();
+    const DB = await ConnectDB();
+    console.log("db", DB);
 
     if (!username) {
       return NextResponse.json(
@@ -51,7 +52,7 @@ export async function POST(req: NextRequest) {
     //   email:userdata.email,
     // }
 
-    const token = jwt.sign({userdata}, process.env.JWT_SECRET as string, {
+    const token = jwt.sign({ userdata }, process.env.JWT_SECRET as string, {
       expiresIn: "5d",
     });
     cookieStore.set("jwt", token, {
@@ -64,6 +65,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "succesfully login" }, { status: 200 });
   } catch (error: any) {
     console.log("found an error", error.message);
-    return NextResponse.json({ message: "error something went wrong" }, { status: 500 });
+    return NextResponse.json(
+      { message: "error something went wrong" },
+      { status: 500 }
+    );
   }
 }

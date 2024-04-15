@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import React from "react";
-import { SignupFormDemo } from "@/components/Comp/Login";
+import { LoginFormDemo } from "@/components/Comp/Login";
 
 const page = () => {
   return (
@@ -17,7 +17,7 @@ const page = () => {
       </div>
       <div className="first col-span-12 sm:col-span-6 sm:h-screen">
         <div className="flex justify-center items-center h-full">
-          <SignupFormDemo />
+          <LoginFormDemo />
         </div>
       </div>
     </div>

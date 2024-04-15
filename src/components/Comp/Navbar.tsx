@@ -26,50 +26,46 @@ function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Services">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/users/login">
-              Log In or Alleady Have An Account
-            </HoveredLink>
-            <HoveredLink href="/users/signup">
-              Sign up or Create Account
-            </HoveredLink>
-            <HoveredLink href="/">Home Page</HoveredLink>
-            <HoveredLink href="/users/profile">Profile</HoveredLink>
+            <HoveredLink href="/users/login">LogIn</HoveredLink>
+            <HoveredLink href="/users/signup">SignUp</HoveredLink>
+            <HoveredLink href="/">Home</HoveredLink>
+            <HoveredLink href="/profile">Profile</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Products">
-          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+          <div className="  text-sm grid grid-cols-1 sm:grid-cols-2 gap-10 p-4 overflow-x-auto">
             <ProductItem
-              title="Algochurn"
+              title="Git Hub"
               href="#"
               src="/img.avif"
-              description="Prepare for tech interviews like never before."
+              description="Prepare for tech companies"
             />
             <ProductItem
-              title="Tailwind Master Kit"
+              title="Git Lab"
               href="#"
               src="/img.avif"
-              description="Production ready Tailwind css components for your next project"
+              description="Production ready Projects"
             />
             <ProductItem
-              title="Moonbeam"
+              title="Twitter"
               href="#"
               src="/img.avif"
-              description="Never write from scratch again. Go from idea to blog in minutes."
+              description="Never write from scratch again. Go from idea to Post in minutes."
             />
             <ProductItem
-              title="Rogue"
+              title="Linkedin"
               href="#"
               src="/img.avif"
-              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+              description="Connect to Peaple and Apply the Interview"
             />
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Pricing">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+            <HoveredLink href="/hobby">Next Auth</HoveredLink>
+            <HoveredLink href="/individual">Jwt Auth</HoveredLink>
+            <HoveredLink href="/team">Chat App Soon</HoveredLink>
+            <HoveredLink href="/enterprise">Something</HoveredLink>
           </div>
         </MenuItem>
       </Menu>

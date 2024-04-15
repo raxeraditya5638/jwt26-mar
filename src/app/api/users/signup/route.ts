@@ -1,15 +1,22 @@
-import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import ConnectDB from "@/lib/ConnectDB";
 import User from "@/models/User";
+import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {
+  const cookieStore = cookies();
   try {
-    const { username, email, password, Confirmpassword } = await req.json();
     await ConnectDB();
+    const { username, email, password, Confirmpassword } = await req.json();
     console.log(username, email, Confirmpassword);
+    if (!username || !email) {
+      return NextResponse.json(
+        { message: "Please enter your username or email" },
+        { status: 400 }
+      );
+    }
     const usernameData = await User.findOne({ username });
     if (usernameData) {
       return NextResponse.json(
@@ -18,7 +25,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const emailData = await User.findOne({ email });
+    const emailData = await User.findOne({
+      $or: [{ username }, { email }],
+    });
     if (emailData) {
       return NextResponse.json(
         { message: "email Allready exists" },
@@ -26,12 +35,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!username || !email) {
-      return NextResponse.json(
-        { message: "Please enter your username or email" },
-        { status: 400 }
-      );
-    }
     if (!password) {
       return NextResponse.json(
         { message: "Please enter your Password" },
@@ -63,24 +66,24 @@ export async function POST(req: NextRequest) {
     });
     console.log(token);
 
-    // cookieStore.set("jwt", token, {
-    //   httpOnly: true,
-    //   maxAge: 5 * 24 * 60 * 60 * 1000,
-    //   secure: true,
-    //   sameSite: "strict",
-    // });
+    cookieStore.set("jwt", token, {
+      httpOnly: true,
+      maxAge: 5 * 24 * 60 * 60 * 1000,
+      secure: true,
+      sameSite: "strict",
+    });
 
     const response = NextResponse.json(
       { message: "successfully to create user" },
       { status: 200 }
     );
 
-    response.cookies.set("jwt", token, {
-      httpOnly: true,
-      // maxAge: 5 * 24 * 60 * 60 * 1000,
-      // secure: true,
-      // sameSite: "strict",
-    });
+    // response.cookies.set("jwt", token, {
+    //   httpOnly: true,
+    //   maxAge: 5 * 24 * 60 * 60 * 1000,
+    //   secure: true,
+    //   sameSite: "strict",
+    // });
 
     return response;
   } catch (error: any) {
