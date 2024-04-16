@@ -62,12 +62,22 @@ const Navbar = () => {
           </button>
         </div>
         {active && (
-          <div className="main z-10 absolute top-16 left-0 w-[90%] text-black h-[90vh]">
-            <h1 className="bg-red-500">hety0</h1>
-            <h1 className="bg-red-500">hety0</h1>
-            <h1 className="bg-red-500">hety0</h1>
-            <h1 className="bg-red-500">hety0</h1>
-            <h1 className="bg-red-500">hety0</h1>
+          <div className="main z-10 absolute top-16 left-0 w-full text-black h-screen">
+            <ul className="flex gap-3 flex-col h-[100%] items-center justify-center bg-sky-500">
+              {/* photo background */}
+              <li>
+                <Link href={"/"}>Git Hub</Link>
+              </li>
+              <li>
+                <Link href={"/"}>Linkedin</Link>
+              </li>
+              <li>
+                <Link href={"/"}>Twitter</Link>
+              </li>
+              <li>
+                <Link href={"/"}>Git Lab</Link>
+              </li>
+            </ul>
           </div>
         )}
       </div>
