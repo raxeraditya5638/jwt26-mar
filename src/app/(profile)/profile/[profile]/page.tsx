@@ -1,19 +1,17 @@
 import ConnectDB from "@/lib/ConnectDB";
 import User from "@/models/User";
 
-export default async function Page({
-  params,
-}: {
-  params: { profile: string };
-}) {
+export default async function Page({ params }: any) {
   await ConnectDB();
-  const para = params.profile;
-  const data = User.findOne().populate("users", User);
-  console.log(params);
+  let userId = params.profile;
+  // parseInt(userId);
+  console.log(userId);
+  const data = await User.findOne({ _id: userId }).populate("username");
+  console.log(data);
   return (
     <div>
       My Post: {params.profile}
-      <h1>{data}</h1>
+      <h1>{data.email}</h1>
     </div>
   );
 }

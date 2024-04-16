@@ -33,7 +33,7 @@ export function LoginFormDemo() {
         setEmail("");
         setpassword("");
         console.log("Message sent successfully");
-        router.push("/profile");
+        router.replace("/profile");
       })
       .catch((error) => {
         // Handle error
@@ -41,9 +41,6 @@ export function LoginFormDemo() {
         console.log("error my", error.response);
         console.error("Error sending message:", error.response.data);
       });
-
-    console.log(res);
-    console.log("Form submitted");
   };
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">

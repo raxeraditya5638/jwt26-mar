@@ -16,7 +16,7 @@ export function SignupFormDemo() {
   const [error, setError] = useState("");
   console.log(username, email, password);
 
-  const Router = useRouter();
+  const router = useRouter();
 
   // Handler for input change
 
@@ -36,6 +36,7 @@ export function SignupFormDemo() {
         setpassword("");
         setConfirmpassword("");
         setError("");
+        router.replace("/profile");
         console.log("Message sent successfully");
       })
       .catch((error) => {
@@ -44,9 +45,6 @@ export function SignupFormDemo() {
         console.log("error my", error.response);
         console.error("Error sending message:", error.response.data);
       });
-    Router.replace("/");
-    console.log(res);
-    console.log("Form submitted");
   };
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">

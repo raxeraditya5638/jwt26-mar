@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       maxAge: 5 * 24 * 60 * 60 * 1000,
       secure: true,
-      // sameSite: "strict",
+      sameSite: "strict",
     });
     console.log(token);
     return NextResponse.json({ message: "succesfully login" }, { status: 200 });
