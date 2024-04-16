@@ -65,6 +65,7 @@ const Navbar = () => {
           <div className="main z-10 absolute top-16 left-0 w-full text-black h-screen">
             <ul className="flex gap-3 flex-col h-[100%] items-center justify-center bg-sky-500">
               {/* photo background */}
+              {/* set image */}
               <li>
                 <Link href={"/"}>Git Hub</Link>
               </li>
