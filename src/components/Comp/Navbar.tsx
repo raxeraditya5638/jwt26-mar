@@ -1,74 +1,103 @@
 "use client";
-import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
-import { cn } from "@/utils/cn";
+import Link from "next/link";
+import style from "@/styles/Navbar.module.css";
+import { useState } from "react";
 
-export function NavbarDemo() {
+const Navbar = () => {
+  const [active, setAcitve] = useState(false);
+  const hame = () => {
+    setAcitve(!active);
+  };
+  const toggleoff = () => {
+    setAcitve(false);
+  };
   return (
-    <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-0" />
-      {/* <p className="text-black dark:text-white">
-        The Navbar will show on top of the page
-      </p> */}
+    <div className="sticky top-0">
+      <div className="main bg-white h-16 px-5 text-black flex items-center justify-between">
+        <div className="left">
+          <ul>
+            <li>
+              <Link href={"/"}>Home</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="center text-black sm:block hidden" id={style.right}>
+          <ul className="flex gap-3 items-center">
+            <li>
+              <Link href={"/"}>Git Hub</Link>
+            </li>
+            <li>
+              <Link href={"/"}>Linkedin</Link>
+            </li>
+            <li>
+              <Link href={"/"}>Twitter</Link>
+            </li>
+            <li>
+              <Link href={"/"}>Git Lab</Link>
+            </li>
+            <li>
+              <Link href={"/users/login"}>Login</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="hamburger sm:hidden block">
+          <button onClick={hame} className="text-black focus:outline-none">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {active ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+        {active && (
+          <div className="main z-10 absolute top-16 left-0 w-full text-black h-[70vh]">
+            <ul className="flex gap-3 flex-col h-[100%] items-end py-10 px-7 justify-start bg-black text-white">
+              {/* photo background */}
+              {/* set image */}
+              <li>
+                <Link href={"/"} onClick={toggleoff}>
+                  Git Hub
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"} onClick={toggleoff}>
+                  Linkedin
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"} onClick={toggleoff}>
+                  Twitter
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"} onClick={toggleoff}>
+                  Git Lab
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
-function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
-  return (
-    <div
-      className={cn(
-        "fixed top-10 rounded-lg sm:rounded-none inset-x-0 max-w-2xl mx-auto z-50",
-        className
-      )}
-    >
-      <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/users/login">LogIn</HoveredLink>
-            <HoveredLink href="/users/signup">SignUp</HoveredLink>
-            <HoveredLink href="/">Home</HoveredLink>
-            <HoveredLink href="/profile">Profile</HoveredLink>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Products">
-          <div className="  text-sm grid grid-cols-1 sm:grid-cols-2 gap-10 p-4 overflow-x-auto">
-            <ProductItem
-              title="Git Hub"
-              href="#"
-              src="/img.avif"
-              description="Prepare for tech companies"
-            />
-            <ProductItem
-              title="Git Lab"
-              href="#"
-              src="/img.avif"
-              description="Production ready Projects"
-            />
-            <ProductItem
-              title="Twitter"
-              href="#"
-              src="/img.avif"
-              description="Never write from scratch again. Go from idea to Post in minutes."
-            />
-            <ProductItem
-              title="Linkedin"
-              href="#"
-              src="/img.avif"
-              description="Connect to Peaple and Apply the Interview"
-            />
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Pricing">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Next Auth</HoveredLink>
-            <HoveredLink href="/individual">Jwt Auth</HoveredLink>
-            <HoveredLink href="/team">Chat App Soon</HoveredLink>
-            <HoveredLink href="/enterprise">Something</HoveredLink>
-          </div>
-        </MenuItem>
-      </Menu>
-    </div>
-  );
-}
+export default Navbar;
