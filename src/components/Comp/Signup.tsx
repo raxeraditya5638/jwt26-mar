@@ -1,11 +1,9 @@
 "use client";
 import React, { use, useState } from "react";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { cn } from "@/utils/cn";
-import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function SignupFormDemo() {
   // State variables to store input data
@@ -47,38 +45,37 @@ export function SignupFormDemo() {
       });
   };
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">
+    <div className="max-w-md w-full text-center mx-auto rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Welcome to Aceternity
+        Welcome to Community
       </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        Login to aceternity if you can because we don&apos;t have a login flow
-        yet
-      </p>
 
-      <form className="my-8" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer>
-            <Label htmlFor="firstname">User Name</Label>
-            <Input
+      <form className="my-4 text-start text-black" onSubmit={handleSubmit}>
+        <div className="flex flex-col w-full text-black md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+          <div className="flex flex-col w-full">
+            <label htmlFor="firstname" className="w-full">
+              User Name
+            </label>
+            <input
               id="firstname"
               placeholder="User Name"
               type="text"
               name="username"
+              className="w-full"
               value={username}
               onChange={(e) => {
                 setusername(e.target.value);
               }}
             />
-          </LabelInputContainer>
-          {/* <LabelInputContainer>
-            <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Durden" type="text" />
-          </LabelInputContainer> */}
+          </div>
+          {/* <div>
+            <label htmlFor="lastname">Last name</label>
+            <input id="lastname" placeholder="Durden" type="text" />
+          </div> */}
         </div>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
-          <Input
+        <div className="mb-4 flex flex-col pt-2">
+          <label htmlFor="email">Email Address</label>
+          <input
             id="email"
             placeholder="projectmayhem@fc.com"
             type="email"
@@ -87,10 +84,10 @@ export function SignupFormDemo() {
               setEmail(e.target.value);
             }}
           />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">password</Label>
-          <Input
+        </div>
+        <div className="mb-4 flex flex-col pt-2">
+          <label htmlFor="password">password</label>
+          <input
             id="password"
             placeholder="••••••••"
             type="password"
@@ -99,10 +96,10 @@ export function SignupFormDemo() {
               setpassword(e.target.value);
             }}
           />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="confirm password">Confirm password</Label>
-          <Input
+        </div>
+        <div className="mb-4 flex flex-col pt-2">
+          <label htmlFor="confirm password">Confirm password</label>
+          <input
             id="confirm password"
             placeholder="••••••••"
             type="password"
@@ -111,7 +108,7 @@ export function SignupFormDemo() {
               setConfirmpassword(e.target.value);
             }}
           />
-        </LabelInputContainer>
+        </div>
 
         {error === "" ? (
           <h1 className="hidden"></h1>
@@ -124,34 +121,14 @@ export function SignupFormDemo() {
           type="submit"
         >
           SignUp &rarr;
-          <BottomGradient />
         </button>
-
-        <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-
-        <div className="flex flex-col space-y-4">
-          <button
-            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="submit"
-          >
-            <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-            <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-              GitHub
-            </span>
-            <BottomGradient />
-          </button>
-          <button
-            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="submit"
-          >
-            <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-            <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-              Google
-            </span>
-            <BottomGradient />
-          </button>
-        </div>
       </form>
+      <Link
+        href={"/users/login"}
+        className="text-white font-bold text-[1rem] text-center w-full bg-zinc-700 rounded-lg py-2 px-5 hover:bg-zinc-800 active:bg-zinc-600 border-zinc-700"
+      >
+        Login
+      </Link>
     </div>
   );
 }
@@ -162,19 +139,5 @@ const BottomGradient = () => {
       <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
       <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
     </>
-  );
-};
-
-const LabelInputContainer = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
-      {children}
-    </div>
   );
 };

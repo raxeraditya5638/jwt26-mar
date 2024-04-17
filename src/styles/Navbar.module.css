@@ -34,6 +34,11 @@
   /* z-index: 1; */
 }
 
+#right ul li:hover {
+  scale: 1.1;
+  transition: 0.5s all ease;
+}
+
 /* #center {
   background-color: red;
 } */
