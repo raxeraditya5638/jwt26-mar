@@ -41,7 +41,7 @@ export function LoginFormDemo() {
       });
   };
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black text-black text-center">
+    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black capitalize text-center">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Welcome to Community
       </h2>
@@ -57,7 +57,7 @@ export function LoginFormDemo() {
               placeholder="raxer"
               type="text"
               name="first name"
-              className="w-full"
+              className="w-full px-7 py-2 rounded-lg"
               value={username}
               onChange={(e) => {
                 setusername(e.target.value);
@@ -72,7 +72,7 @@ export function LoginFormDemo() {
             placeholder="projectmayhem@fc.com"
             type="email"
             value={email}
-            className="w-full"
+            className="w-full px-7 py-2 rounded-lg"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -84,6 +84,7 @@ export function LoginFormDemo() {
             id="password"
             placeholder="••••••••"
             type="password"
+            className="w-full px-7 py-2 rounded-lg"
             value={password}
             onChange={(e) => {
               setpassword(e.target.value);

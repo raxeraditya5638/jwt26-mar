@@ -13,11 +13,16 @@ const Navbar = () => {
   };
   return (
     <div className="sticky top-0">
-      <div className="main bg-white h-16 px-5 text-black flex items-center justify-between">
+      <div
+        className="main py-2 px-5 text-black flex items-center justify-between"
+        id={style.main}
+      >
         <div className="left">
           <ul>
             <li>
-              <Link href={"/"}>Home</Link>
+              <Link href={"/"} className="font-extrabold text-2xl font-mono">
+                Home
+              </Link>
             </li>
           </ul>
         </div>

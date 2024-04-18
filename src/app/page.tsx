@@ -1,8 +1,13 @@
-export default function Home() {
+import Home from "@/components/Home";
+
+export default function home() {
   return (
     <>
-      <div className="nav"></div>
-      <div className="back mt-[80px]"></div>
+      <div className="main w-full h-full">
+        <div className="nav">
+          <Home />
+        </div>
+      </div>
     </>
   );
 }
