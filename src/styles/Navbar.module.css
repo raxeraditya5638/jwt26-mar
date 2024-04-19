@@ -1,17 +1,10 @@
-/* #center ul {
-  height: 60px; */
-/* background-color: blue;
-} */
-
 #main {
-  background-color: white;
+  background-color: rgba(255, 246, 246, 0.652);
 }
 
 #right ul li {
   position: relative;
-  /* height: 60px; */
   padding: 0.5rem 1rem;
-  /* margin: 15px; */
   border-radius: 10px;
   overflow: hidden;
   background: rgb(131, 58, 180);
@@ -44,16 +37,10 @@
 
 #right ul li:hover::before {
   position: absolute;
-  /* top: 100%; */
   left: 100%;
-  /* z-index: 1; */
 }
 
 #right ul li:hover {
   scale: 1.1;
   transition: 0.5s all ease;
 }
-
-/* #center {
-  background-color: red;
-} */

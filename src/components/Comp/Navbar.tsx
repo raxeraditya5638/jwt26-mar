@@ -12,7 +12,7 @@ const Navbar = () => {
     setAcitve(false);
   };
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-40">
       <div
         className="main py-2 px-5 text-black flex items-center justify-between"
         id={style.main}
@@ -74,7 +74,7 @@ const Navbar = () => {
         </div>
         {active && (
           <div className="main z-10 absolute top-16 left-0 w-full text-black h-[70vh]">
-            <ul className="flex gap-3 flex-col h-[100%] items-end py-10 px-7 justify-start bg-black text-white">
+            <ul className="flex gap-3 flex-col h-[100%] items-end py-10 px-7 justify-start text-white">
               {/* photo background */}
               {/* set image */}
               <li>
