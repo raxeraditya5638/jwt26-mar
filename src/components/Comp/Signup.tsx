@@ -50,8 +50,8 @@ export function SignupFormDemo() {
         Welcome to Community
       </h2>
 
-      <form className="my-4 text-start text-black" onSubmit={handleSubmit}>
-        <div className="flex flex-col w-full text-black md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+      <form className="my-4 text-start capitalize" onSubmit={handleSubmit}>
+        <div className="flex flex-col w-full md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <div className="flex flex-col w-full">
             <label htmlFor="firstname" className="w-full">
               User Name
@@ -61,7 +61,7 @@ export function SignupFormDemo() {
               placeholder="User Name"
               type="text"
               name="username"
-              className="w-full"
+              className="w-full px-7 py-2 rounded-lg"
               value={username}
               onChange={(e) => {
                 setusername(e.target.value);
@@ -79,6 +79,7 @@ export function SignupFormDemo() {
             id="email"
             placeholder="projectmayhem@fc.com"
             type="email"
+            className="w-full px-7 py-2 rounded-lg"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -92,6 +93,7 @@ export function SignupFormDemo() {
             placeholder="••••••••"
             type="password"
             value={password}
+            className="w-full px-7 py-2 rounded-lg"
             onChange={(e) => {
               setpassword(e.target.value);
             }}
@@ -103,6 +105,7 @@ export function SignupFormDemo() {
             id="confirm password"
             placeholder="••••••••"
             type="password"
+            className="w-full px-7 py-2 rounded-lg"
             value={Confirmpassword}
             onChange={(e) => {
               setConfirmpassword(e.target.value);
