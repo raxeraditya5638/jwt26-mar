@@ -6,6 +6,7 @@ import { CardHoverEffectDemo } from "@/components/CardHoverEffectDemo";
 import { motion, useScroll } from "framer-motion";
 import { HeroHighlightDemo } from "./HeroHighlightDemo";
 import { HeroParallaxDemo } from "./HeroParallaxDemo";
+
 const PageT = () => {
   const items = ["ehy", "ehy", 6, 52, 52];
   const Scroll = useScroll();
@@ -21,6 +22,7 @@ const PageT = () => {
         <div className="move">
           <HeroParallaxDemo />
         </div>
+        <div className="pop"></div>
       </div>
     </div>
   );
